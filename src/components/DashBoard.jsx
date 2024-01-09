@@ -139,12 +139,12 @@ useEffect(()=>{
             <td>{i+1}</td>
             <td>{e.auther.name}</td>
             <td>{e.auther.birth}</td>
-            <td>{e.auther.bio}</td>
+            <td style={{width:'40em'}}>{e.auther.bio}</td>
             <td>
             <Button variant="primary" onClick={()=>navigate (`/edit-user/${e.id}`)}>Edit</Button>
             &nbsp;
             &nbsp;
-      <Button variant="danger" onClick={()=>{handleDelete(e.id)}}>Delete</Button>
+      <Button variant="danger" onClick={()=>{handleDelete(e.id)}} style={{margin:'1em'}}>Delete</Button>
       {/* {console.log(e.id)} */}
             </td>
             
