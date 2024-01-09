@@ -6,10 +6,10 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axioService from '../Utils/Apiservices';
 
-function EditUser({user,setUser}) {
+function EditUser() {
   let navigate=useNavigate()
   let params=useParams()//this will retur a object
-let [initialValues,setValues]=useState({
+let [initialValuesMap,setValues]=useState({
   book:{
     title:'',
     author:'',
@@ -24,9 +24,12 @@ let [initialValues,setValues]=useState({
 })
 const getUserData=async()=>{
   let {id}=params;
+  // console.log(id);
   try {
     let res=await axioService.get(`/user/${id}`)
+    // console.log(res.data);
     if(res.status===200){
+      // console.log(res.data.auther.bio);
       setValues({
         book:{
           title:res.data.book.title,
@@ -45,12 +48,12 @@ const getUserData=async()=>{
     }
     
   } catch (error) {
+    alert("error")
     
   }
 }
-
   let formik=useFormik({
-    initialValues:initialValues,
+    initialValues:initialValuesMap,
     validationSchema: Yup.object({
       book:Yup.object({
         title:Yup.string().required('Title is Required'),
@@ -64,6 +67,7 @@ const getUserData=async()=>{
         bio:Yup.string().required('Biography is required')
       })
     }),
+    enableReinitialize:true,
     onSubmit:async(values)=>{
       let {id}=params;
       values.id=id;
@@ -115,7 +119,7 @@ const getUserData=async()=>{
         <Form.Control type="text" placeholder="Book Title" id='title' name='book.title' onChange={formik.handleChange} value={formik.values.book.title} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}}/>
           {formik.touched.book?.title && formik.errors.book?.title ? (<div style={{color:"red"}}>{formik.errors.book.title}</div>) : null}
 
-        <Form.Control type='text' placeholder='Book Author' id='auther' name='book.author' onChange={formik.handleChange} value={formik.values.book.author} onBlur={formik.handleBlur}  style={{textAlign:'center', margin:'1em', fontStyle:'italic'}}/>
+        <Form.Control type='text' placeholder='Book Author' id='author' name='book.author' onChange={formik.handleChange} value={formik.values.book.author} onBlur={formik.handleBlur}  style={{textAlign:'center', margin:'1em', fontStyle:'italic'}}/>
          {formik.touched.book?.author && formik.errors.book?.author ? (<div style={{color:"red"}}>{formik.errors.book.author}</div>) : null}
 
         <Form.Control type='text' placeholder='ISBN number' id='ISBN' name='book.ISBN' onChange={formik.handleChange} value={formik.values.book.ISBN} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}} />
