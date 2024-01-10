@@ -86,9 +86,10 @@ useEffect(()=>{
 
   </div>
   <div className="row">
+  <div style={{display:'flex',justifyContent:'center'}}><h1 className='fw-bold text-primary my-2 '>Book Details</h1></div>
   <Table striped bordered hover>
       <thead>
-        <tr style={{textAlign:'center'}}>
+        <tr style={{textAlign:'center',fontStyle:'italic'}}>
           <th>#</th>
           <th>Title</th>
           <th>Author</th>
@@ -105,7 +106,7 @@ useEffect(()=>{
             <td>{e.book.title}</td>
             <td>{e.book.author}</td>
             <td>{e.book.ISBN}</td>
-            <td>{e.book.pub}</td>
+            <td>{new Date(e.book.pub).toLocaleDateString()}</td>
             <td>
             <Button variant="primary" onClick={()=>navigate (`/edit-user/${e.id}`)}>Edit</Button>
             &nbsp;
@@ -121,9 +122,10 @@ useEffect(()=>{
       </tbody>
     </Table> 
    <div className="row">
+    <div style={{display:'flex',justifyContent:'center'}}><h1 className='fw-bold text-primary my-2 '>Author Details</h1></div>
     <Table striped bordered hover>
     <thead>
-        <tr style={{textAlign:'center'}}>
+        <tr style={{textAlign:'center',fontStyle:'italic'}}>
           <th>#</th>
           <th>Author Name</th>
           <th>DOB</th>
@@ -137,7 +139,7 @@ useEffect(()=>{
             return <tr key={e.id}  style={{textAlign:'center'}}>
             <td>{i+1}</td>
             <td>{e.auther.name}</td>
-            <td>{e.auther.birth}</td>
+            <td>{new Date(e.auther.birth).toLocaleDateString()}</td>
             <td style={{width:'40em'}}>{e.auther.bio}</td>
             <td>
             <Button variant="primary" onClick={()=>navigate (`/edit-user/${e.id}`)}>Edit</Button>

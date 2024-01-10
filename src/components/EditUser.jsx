@@ -40,7 +40,7 @@ const getUserData=async()=>{
         },
         auther:{
           name:res.data.auther.name,
-          birth:res.data.auther.birth,
+          birth: new Date(res.data.auther.birth).toISOString().split('T')[0], // Format the date
           bio:res.data.auther.bio
 
         }
@@ -138,7 +138,7 @@ const getUserData=async()=>{
         <Form.Control type='text' placeholder='Author Name' id='author-name' name='auther.name' onChange={formik.handleChange} value={formik.values.auther.name} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}} />
           {formik.touched.auther?.name && formik.errors.auther?.name ? (<div style={{color:"red"}}>{formik.errors.auther.name}</div>) : null}
 
-        <Form.Control type='text' placeholder='Date Of Birth' id='birth' name='auther.birth' onChange={formik.handleChange} value={formik.values.auther.birth} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}} />
+        <Form.Control type='date' placeholder='Date Of Birth' id='birth' name='auther.birth' onChange={formik.handleChange} value={formik.values.auther.birth} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}} />
           {formik.touched.auther?.birth && formik.errors.auther?.birth ? (<div style={{color:"red"}}>{formik.errors.auther.birth}</div>) : null}
 
            <Form.Control type='text' placeholder='A Short Biography' id='bio' name='auther.bio' onChange={formik.handleChange} value={formik.values.auther.bio} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}} />
