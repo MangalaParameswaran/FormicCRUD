@@ -10,7 +10,7 @@ function SideBar() {
       <div className="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
   </a>
 
-  <hr className="sidebar-divider my-0"/>
+  <hr className="sidebar-divider" style={{ color: 'white', borderColor: 'white' }} />
 
   <li className="nav-item active">
       <Link to='/dashboard' className="nav-link" href="index.html">
@@ -18,41 +18,42 @@ function SideBar() {
           <span>Dashboard</span></Link>
   </li>
 
-  <hr className="sidebar-divider"/>
+  <hr className="sidebar-divider" style={{ color: 'white', borderColor: 'white' }} />
+
   <li className="nav-item active">
       <Link to='/add-user' className="nav-link" href="index.html">
           <i className="fas fa-fw fa-tachometer-alt"></i>
           <span>Add User</span></Link>
   </li>
-  <hr className="sidebar-divider"/>
+  <hr className="sidebar-divider" style={{ color: 'white', borderColor: 'white' }} />
   <li className="nav-item active">
       <Link to='/edit-User/:id' className="nav-link" href="index.html">
           <i className="fas fa-fw fa-tachometer-alt"></i>
           <span>Edit User</span></Link>
   </li>
 
-  <hr className="sidebar-divider"/>
+  <hr className="sidebar-divider" style={{ color: 'white', borderColor: 'white' }} />
   <li className="nav-item active">
       <Link to='/user' className="nav-link" href="index.html">
           <i className="fas fa-fw fa-tachometer-alt"></i>
           <span>User</span></Link>
   </li>
 
-  <hr className="sidebar-divider"/>
+  <hr className="sidebar-divider" style={{ color: 'white', borderColor: 'white' }} />
   <li className="nav-item active">
       <Link to='/class' className="nav-link" href="index.html">
           <i className="fas fa-fw fa-tachometer-alt"></i>
           <span>Class</span></Link>
   </li>
 
-  <hr className="sidebar-divider"/>
+  <hr className="sidebar-divider" style={{ color: 'white', borderColor: 'white' }} />
   <li className="nav-item active">
       <Link to='/money' className="nav-link" href="index.html">
           <i className="fas fa-fw fa-tachometer-alt"></i>
           <span>Money</span></Link>
   </li>
 
-  <hr className="sidebar-divider"/>
+  <hr className="sidebar-divider" style={{ color: 'white', borderColor: 'white' }} />
 </ul>    
 }
 
