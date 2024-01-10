@@ -7,7 +7,7 @@ import axioService from '../Utils/Apiservices';
 import { useNavigate } from 'react-router-dom';
 
 
-function AddUser({user,setUser}) {
+function AddUser() {
   let navigate=useNavigate()
   let formik=useFormik({
     initialValues:{
@@ -28,7 +28,7 @@ function AddUser({user,setUser}) {
         title:Yup.string().required('Title is Required'),
         author:Yup.string().required('Author Name is Required'),
         ISBN:Yup.string().required('ISBN Number is required').matches(/^\d{6}$/, 'Enter a valid ISBN Number'),
-        pub:Yup.string().required('Date is Required')
+        pub:Yup.date().required('Date is Required').min('10-01-2024', 'select greater date')
       }),
       auther:Yup.object({
         name:Yup.string().required("Authors name is required"),
@@ -68,7 +68,7 @@ function AddUser({user,setUser}) {
         <Form.Control type='text' placeholder='ISBN number' id='ISBN' name='book.ISBN' onChange={formik.handleChange} value={formik.values.book.ISBN} onBlur={formik.handleBlur} />
           {formik.touched.book?.ISBN && formik.errors.book?.ISBN ? (<div style={{color:"red"}}>{formik.errors.book.ISBN}</div>) : null}
 
-        <Form.Control type='text' placeholder='Publication Date' id='pub' name='book.pub' onChange={formik.handleChange} value={formik.values.book.pub} onBlur={formik.handleBlur} />
+        <Form.Control type='date' placeholder='Publication Date' id='pub' name='book.pub' onChange={formik.handleChange} value={formik.values.book.pub} onBlur={formik.handleBlur} />
          {formik.touched.book?.pub && formik.errors.book?.pub ? (<div style={{color:"red"}}>{formik.errors.book.pub}</div>) : null}
 
 

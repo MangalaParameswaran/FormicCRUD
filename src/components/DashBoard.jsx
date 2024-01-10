@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import  Table  from 'react-bootstrap/Table'
 import  Button  from 'react-bootstrap/Button'
-import User from './User'
 import { useNavigate } from 'react-router-dom'
 import axioService from '../Utils/Apiservices'
 
