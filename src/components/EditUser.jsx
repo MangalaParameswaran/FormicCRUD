@@ -35,7 +35,7 @@ const getUserData=async()=>{
           title:res.data.book.title,
           author:res.data.book.author,
           ISBN:res.data.book.ISBN,
-          pub:res.data.book.pub
+          pub: new Date(res.data.book.pub).toISOString().split('T')[0]  // Format the date
 
         },
         auther:{
@@ -59,7 +59,7 @@ const getUserData=async()=>{
         title:Yup.string().required('Title is Required'),
         author:Yup.string().required('Author Name is Required'),
         ISBN:Yup.string().required('ISBN Number is required').matches(/^\d{6}$/, 'Enter a valid ISBN Number'),
-        pub:Yup.string().required('Date is Required')
+        pub:Yup.date().required('Date is Required')
       }),
       auther:Yup.object({
         name:Yup.string().required("Authors name is required"),
@@ -78,7 +78,7 @@ const getUserData=async()=>{
         }
         
       } catch (error) {
-        alert("Error")
+
       }
 
     }
@@ -125,7 +125,7 @@ const getUserData=async()=>{
         <Form.Control type='text' placeholder='ISBN number' id='ISBN' name='book.ISBN' onChange={formik.handleChange} value={formik.values.book.ISBN} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}} />
           {formik.touched.book?.ISBN && formik.errors.book?.ISBN ? (<div style={{color:"red"}}>{formik.errors.book.ISBN}</div>) : null}
 
-        <Form.Control type='text' placeholder='Publication Date' id='pub' name='book.pub' onChange={formik.handleChange} value={formik.values.book.pub} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}} />
+        <Form.Control type='date' placeholder='Publication Date' id='pub' name='book.pub' onChange={formik.handleChange} value={formik.values.book.pub} onBlur={formik.handleBlur} style={{textAlign:'center', margin:'1em', fontStyle:'italic'}} />
          {formik.touched.book?.pub && formik.errors.book?.pub ? (<div style={{color:"red"}}>{formik.errors.book.pub}</div>) : null}
 
 
